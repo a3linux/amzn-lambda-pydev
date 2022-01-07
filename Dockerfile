@@ -39,10 +39,6 @@ ARG gid=1001
 ENV IACUSER_HOME /home/iacuser
 RUN /usr/sbin/groupadd -g ${gid} ${group} && /usr/sbin/useradd -u ${uid} -g ${group} -d ${IACUSER_HOME} -s /bin/bash ${user}
 
-COPY ./scripts/dotbash_functions ${IACUSER_HOME}/.bash_functions
-COPY ./scripts/dotbash_profile ${IACUSER_HOME}/.bash_profile
-COPY .yarnrc ${IACUSER_HOME}/.yarnrc
-COPY .npmrc ${IACUSER_HOME}/.npmrc
 RUN chown -R ${user}:${group} ${IACUSER_HOME}
 
 USER iacuser
