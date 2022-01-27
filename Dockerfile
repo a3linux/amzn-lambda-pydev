@@ -5,15 +5,15 @@ RUN yum install -y yum-utils curl wget which gcc-c++ make jq amazon-linux-extras
 # NodeJs 16.x
 RUN curl -sL https://rpm.nodesource.com/setup_16.x | bash -
 RUN yum install -y nodejs
-# terraform: 1.1.2
+# terraform: 1.1.3
 RUN yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
 RUN yum -y install terraform
 # Vault
 RUN yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
 RUN yum -y install vault
 # terragrunt: 0.35.16
-ENV TERRAGRUNT_VERSION=v0.35.16
-ENV TERRAGRUNT_SHA256SUM=0404f0dfd2ab3b642dcf2c1c038d0bcbee256ee14a92d731a9ea0514f6cf47f4
+ENV TERRAGRUNT_VERSION=v0.36.0
+ENV TERRAGRUNT_SHA256SUM=e507a7ee9be00bfccb2159a40de13cffbbfb8da0c3c29ddcacd34213a15ebbae
 RUN curl -sL https://github.com/gruntwork-io/terragrunt/releases/download/${TERRAGRUNT_VERSION}/terragrunt_linux_amd64 > \
     terragrunt_${TERRAGRUNT_VERSION} && \
     echo "${TERRAGRUNT_SHA256SUM}  terragrunt_${TERRAGRUNT_VERSION}" > terragrunt_${TERRAGRUNT_VERSION}_SHA256SUMS && \
